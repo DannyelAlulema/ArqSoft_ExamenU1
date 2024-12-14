@@ -1,9 +1,6 @@
 package ec.edu.espe.office.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -11,22 +8,66 @@ import java.util.Objects;
 @Table(name = "OFI_EDIFICIO_BLOQUE")
 public class Block {
     @Id
-    @Column(name = "COD_EDIFICIO_BLOQUE", length = 8)
+    @Column(name = "COD_EDIFICIO_BLOQUE", length = 8, nullable = false)
     private String code;
 
-    @Column(name = "COD_EDIFICIO")
+    @Column(name = "COD_EDIFICIO", length = 8, nullable = false)
     private String buildingCode;
 
     @Column(name = "NOMBRE_BLOQUE", length = 128, nullable = false)
     private String name;
 
-    @Column(name = "DESCRIPCION", length = 500)
+    @Column(name = "DESCRIPCION", length = 500, nullable = true)
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "COD_EDIFICIO", referencedColumnName = "COD_EDIFICIO", insertable = false, updatable = false)
+    private Building building;
 
     public Block() { }
 
     public Block(String code) {
         this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getBuildingCode() {
+        return buildingCode;
+    }
+
+    public void setBuildingCode(String buildingCode) {
+        this.buildingCode = buildingCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
     }
 
     @Override

@@ -9,39 +9,43 @@ import java.util.Objects;
 @Entity
 @Table(name = "OFI_AULA")
 public class Classroom {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "COD_AULA")
-    private Long code;
+    @EmbeddedId
+    private ClassroomPk pk;
 
-    @Column(name = "COD_EDIFICIO")
-    private String buildingCode;
-
-    @Column(name = "COD_EDIFICIO_BLOQUE")
-    private String blockCode;
-
-    @Column(name = "COD_TIPO_AULA")
+    @Column(name = "COD_TIPO_AULA", length = 10, nullable = false)
     private String classroomTypeCode;
 
-    @Column(name = "COD_ALTERNO", length = 8)
+    @Column(name = "COD_ALTERNO", length = 8, nullable = false)
     private String randomCode;
 
-    @Column(name = "CAPACIDAD", precision = 4)
+    @Column(name = "CAPACIDAD", precision = 4, nullable = false)
     private Integer capacity;
 
-    @Column(name = "PISO", precision = 2)
+    @Column(name = "PISO", precision = 2, nullable = false)
     private Integer floor;
 
     @Column(name = "FECHA_CREACION", nullable = false)
     private LocalDate creationDate;
 
-    @Column(name = "FECHA_ULT_ACTUALIZACION")
+    @Column(name = "FECHA_ULT_ACTUALIZACION", nullable = true)
     private LocalDateTime lastUpdateDate;
+
+    @ManyToOne
+    @JoinColumn(name = "COD_TIPO_AULA", referencedColumnName = "COD_TIPO_AULA", insertable = false, updatable = false)
+    private ClassroomType classroomType;
+
+    @ManyToOne
+    @JoinColumn(name = "COD_TIPO_AULA", referencedColumnName = "COD_TIPO_AULA", insertable = false, updatable = false)
+    private ClassroomType classroomType;
+
+    @ManyToOne
+    @JoinColumn(name = "COD_TIPO_AULA", referencedColumnName = "COD_TIPO_AULA", insertable = false, updatable = false)
+    private ClassroomType classroomType;
 
     public Classroom() { }
 
-    public Classroom(Long code) {
-        this.code = code;
+    public Classroom(ClassroomPk pk) {
+        this.pk = pk;
     }
 
     @Override
@@ -49,20 +53,18 @@ public class Classroom {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Classroom classroom = (Classroom) o;
-        return Objects.equals(code, classroom.code);
+        return Objects.equals(pk, classroom.pk);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(code);
+        return Objects.hashCode(pk);
     }
 
     @Override
     public String toString() {
         return "Classroom{" +
-                "code=" + code +
-                ", buildingCode='" + buildingCode + '\'' +
-                ", blockCode='" + blockCode + '\'' +
+                "pk=" + pk +
                 ", classroomTypeCode='" + classroomTypeCode + '\'' +
                 ", randomCode='" + randomCode + '\'' +
                 ", capacity=" + capacity +

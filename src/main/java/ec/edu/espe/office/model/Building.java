@@ -1,9 +1,6 @@
 package ec.edu.espe.office.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -11,35 +8,39 @@ import java.util.Objects;
 @Table(name = "OFI_EDIFICIO")
 public class Building {
     @Id
-    @Column(name = "COD_EDIFICIO")
+    @Column(name = "COD_EDIFICIO", length = 8, nullable = false)
     private String code;
 
-    @Column(name = "COD_SEDE")
+    @Column(name = "COD_SEDE", length = 8, nullable = false)
     private String codeSede;
 
-    @Column(name = "NOMBRES")
+    @Column(name = "NOMBRES", length = 128, nullable = false)
     private String name;
 
-    @Column(name = "COD_ALEATORIO")
+    @Column(name = "COD_ALEATORIO", length = 16, nullable = false)
     private String randomCode;
 
-    @Column(name = "DESCRIPCION")
+    @Column(name = "DESCRIPCION", length = 500, nullable = false)
     private String description;
 
-    @Column(name = "DIRECCION")
+    @Column(name = "DIRECCION", length = 256, nullable = false)
     private String address;
 
-    @Column(name = "COMENTARIO")
+    @Column(name = "COMENTARIO", length = 1000, nullable = false)
     private String comment;
 
-    @Column(name = "MANEJA_BLOQUES")
+    @Column(name = "MANEJA_BLOQUES", nullable = false)
     private Boolean hasBlocks;
 
-    @Column(name = "POSEE_AULAS")
+    @Column(name = "POSEE_AULAS", nullable = false)
     private String hasClassrooms;
 
-    @Column(name = "PISOS")
+    @Column(name = "PISOS", precision = 2, nullable = false)
     private Integer floors;
+
+    @ManyToOne
+    @JoinColumn(name = "COD_SEDE", referencedColumnName = "COD_SEDE", insertable = false, updatable = false)
+    private Branch branch;
 
     public Building() { }
 
