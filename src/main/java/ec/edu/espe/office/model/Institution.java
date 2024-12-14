@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Institution {
     @Id
     @Column(name = "COD_INSTITUCION", precision = 3, nullable = false)
-    private Long code;
+    private Integer code;
 
     @Column(name = "RUC", length = 13, nullable = false)
     private String ruc;
@@ -22,15 +22,15 @@ public class Institution {
 
     public Institution() { }
 
-    public Institution(Long code) {
+    public Institution(Integer code) {
         this.code = code;
     }
 
-    public Long getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(Long code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

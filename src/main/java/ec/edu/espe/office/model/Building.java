@@ -12,7 +12,7 @@ public class Building {
     private String code;
 
     @Column(name = "COD_SEDE", length = 8, nullable = false)
-    private String codeSede;
+    private String branchCode;
 
     @Column(name = "NOMBRES", length = 128, nullable = false)
     private String name;
@@ -48,6 +48,94 @@ public class Building {
         this.code = code;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getBranchCode() {
+        return branchCode;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRandomCode() {
+        return randomCode;
+    }
+
+    public void setRandomCode(String randomCode) {
+        this.randomCode = randomCode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Boolean getHasBlocks() {
+        return hasBlocks;
+    }
+
+    public void setHasBlocks(Boolean hasBlocks) {
+        this.hasBlocks = hasBlocks;
+    }
+
+    public String getHasClassrooms() {
+        return hasClassrooms;
+    }
+
+    public void setHasClassrooms(String hasClassrooms) {
+        this.hasClassrooms = hasClassrooms;
+    }
+
+    public Integer getFloors() {
+        return floors;
+    }
+
+    public void setFloors(Integer floors) {
+        this.floors = floors;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,7 +153,7 @@ public class Building {
     public String toString() {
         return "Building{" +
                 "code='" + code + '\'' +
-                ", codeSede='" + codeSede + '\'' +
+                ", codeSede='" + branchCode + '\'' +
                 ", name='" + name + '\'' +
                 ", randomCode='" + randomCode + '\'' +
                 ", description='" + description + '\'' +

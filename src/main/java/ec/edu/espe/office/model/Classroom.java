@@ -15,7 +15,7 @@ public class Classroom {
     @Column(name = "COD_TIPO_AULA", length = 10, nullable = false)
     private String classroomTypeCode;
 
-    @Column(name = "COD_ALTERNO", length = 8, nullable = false)
+    @Column(name = "COD_ALTERNO", length = 10, nullable = false)
     private String randomCode;
 
     @Column(name = "CAPACIDAD", precision = 4, nullable = false)
@@ -31,12 +31,12 @@ public class Classroom {
     private LocalDateTime lastUpdateDate;
 
     @ManyToOne
-    @JoinColumn(name = "COD_TIPO_AULA", referencedColumnName = "COD_TIPO_AULA", insertable = false, updatable = false)
-    private ClassroomType classroomType;
+    @JoinColumn(name = "COD_EDIFICIO", referencedColumnName = "COD_EDIFICIO", insertable = false, updatable = false)
+    private Building building;
 
     @ManyToOne
-    @JoinColumn(name = "COD_TIPO_AULA", referencedColumnName = "COD_TIPO_AULA", insertable = false, updatable = false)
-    private ClassroomType classroomType;
+    @JoinColumn(name = "COD_EDIFICIO_BLOQUE", referencedColumnName = "COD_EDIFICIO_BLOQUE", insertable = false, updatable = false)
+    private Block block;
 
     @ManyToOne
     @JoinColumn(name = "COD_TIPO_AULA", referencedColumnName = "COD_TIPO_AULA", insertable = false, updatable = false)
@@ -46,6 +46,86 @@ public class Classroom {
 
     public Classroom(ClassroomPk pk) {
         this.pk = pk;
+    }
+
+    public ClassroomPk getPk() {
+        return pk;
+    }
+
+    public void setPk(ClassroomPk pk) {
+        this.pk = pk;
+    }
+
+    public String getClassroomTypeCode() {
+        return classroomTypeCode;
+    }
+
+    public void setClassroomTypeCode(String classroomTypeCode) {
+        this.classroomTypeCode = classroomTypeCode;
+    }
+
+    public String getRandomCode() {
+        return randomCode;
+    }
+
+    public void setRandomCode(String randomCode) {
+        this.randomCode = randomCode;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
+
+    public Integer getFloor() {
+        return floor;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDateTime getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public void setLastUpdateDate(LocalDateTime lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
+    }
+
+    public Block getBlock() {
+        return block;
+    }
+
+    public void setBlock(Block block) {
+        this.block = block;
+    }
+
+    public ClassroomType getClassroomType() {
+        return classroomType;
+    }
+
+    public void setClassroomType(ClassroomType classroomType) {
+        this.classroomType = classroomType;
     }
 
     @Override

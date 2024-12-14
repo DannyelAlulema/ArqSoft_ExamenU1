@@ -24,7 +24,7 @@ public class Branch {
     @Column(name = "ES_PRINCIPAL", nullable = false)
     private Boolean isMain;
 
-    @Column(name = "PRESUPUESTO", nullable = false)
+    @Column(name = "PRESUPUESTO", precision = 18, scale = 2, nullable = false)
     private BigDecimal budget;
 
     @ManyToOne
